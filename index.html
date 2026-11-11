@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070812">
+<meta name="description" content="Hizutome — aspiring full-stack developer, creator, and technology enthusiast.">
+<title>HIZUTOME — Digital Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070812;--bg2:#0b0d1c;--panel:rgba(17,20,42,.68);
+  --line:rgba(157,166,255,.16);--text:#f3f4ff;--muted:#9ba2c2;
+  --violet:#a78bfa;--cyan:#67e8f9;--pink:#f0abfc;
+  --glow:0 0 35px rgba(103,232,249,.13),0 0 75px rgba(167,139,250,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:"Space Grotesk",sans-serif;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 12% 12%,rgba(110,70,220,.2),transparent 38%),radial-gradient(ellipse at 88% 48%,rgba(20,170,210,.12),transparent 40%),linear-gradient(135deg,#070812,#0b0c1b 55%,#080916)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.15;background-image:linear-gradient(rgba(160,170,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(160,170,255,.08) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+a{color:inherit;text-decoration:none}button{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(7,8,18,.72);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:700;letter-spacing:4px;font-size:19px;background:linear-gradient(100deg,#fff,var(--violet),var(--cyan));background-clip:text;color:transparent}
+.nav-links{display:flex;gap:27px;align-items:center}
+.nav-links a{font:11px "DM Mono",monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);text-shadow:0 0 18px rgba(103,232,249,.55)}
+.menu-btn{display:none;border:1px solid var(--line);background:#11142a;color:white;border-radius:10px;padding:8px 12px;cursor:pointer}
+section{padding:112px 0}
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:140px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+.eyebrow{font:11px "DM Mono",monospace;letter-spacing:3px;text-transform:uppercase;color:var(--cyan)}
+.hero h1{font-size:clamp(54px,8vw,96px);line-height:.99;letter-spacing:-5px;margin:22px 0}
+.gradient{background:linear-gradient(105deg,#fff 5%,#c4a7ff 43%,#67e8f9 85%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero-description{max-width:570px;color:var(--muted);font-size:16px;margin-bottom:32px}
+.actions{display:flex;gap:13px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 21px;border-radius:11px;font-size:12px;font-weight:700;letter-spacing:.3px;border:1px solid var(--line);transition:transform .25s,box-shadow .25s,border-color .25s}
+.btn:hover{transform:translateY(-4px);box-shadow:var(--glow);border-color:rgba(103,232,249,.5)}
+.btn-primary{background:linear-gradient(110deg,#8767e9,#398ebc);border:0;color:white}
+.btn-secondary{background:rgba(255,255,255,.035)}
+.profile-wrap{position:relative}
+.orbit{position:absolute;inset:-25px;border:1px solid rgba(103,232,249,.18);border-radius:32px;transform:rotate(7deg);pointer-events:none}
+.orbit:after{content:"";position:absolute;width:8px;height:8px;right:12%;top:12%;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}
+.profile-card,.card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(25,29,58,.82),rgba(11,13,29,.76));backdrop-filter:blur(14px);box-shadow:0 24px 80px rgba(0,0,0,.24);border-radius:22px}
+.profile-card{position:relative;padding:35px 30px;overflow:hidden}
+.profile-card:before{content:"";position:absolute;width:220px;height:220px;right:-90px;top:-110px;background:rgba(103,232,249,.18);filter:blur(55px)}
+.profile-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.profile-icon{width:82px;height:82px;display:grid;place-items:center;border-radius:24px;font-size:32px;font-weight:700;background:linear-gradient(135deg,#8767e9,#238aa8);box-shadow:0 10px 40px rgba(103,150,249,.28)}
+.card-code{font:10px "DM Mono",monospace;color:#7883a8;letter-spacing:1px}
+.profile-card h2{font-size:27px;letter-spacing:2px}
+.profile-card p{color:var(--muted);font-size:13px}
+.status{display:flex;align-items:center;gap:9px;margin-top:25px;color:#9df5d1;font:11px "DM Mono",monospace}
+.status-dot{width:7px;height:7px;background:#6ee7a0;border-radius:50%;box-shadow:0 0 12px #6ee7a0}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.stat{padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
+.stat strong{display:block;font-size:17px;color:var(--cyan)}
+.stat span{font:9px "DM Mono",monospace;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.section-heading{margin-bottom:42px}
+.section-heading h2{font-size:clamp(34px,5vw,52px);letter-spacing:-2px;margin-top:8px}
+.section-heading p{color:var(--muted);margin-top:8px}
+.about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.card{padding:28px;transition:transform .3s,border-color .3s,background .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(103,232,249,.38);background:linear-gradient(145deg,rgba(28,34,66,.9),rgba(11,13,29,.8))}
+.card h3{font-size:18px;margin-bottom:12px}
+.card p{color:var(--muted);font-size:14px}
+.info-list{display:grid;gap:13px}
+.info-item{display:flex;justify-content:space-between;gap:12px;padding-bottom:11px;border-bottom:1px solid var(--line);font-size:12px}
+.info-item span:first-child{color:var(--muted)}
+.info-item span:last-child{text-align:right}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-icon{font-size:27px;margin-bottom:14px;filter:drop-shadow(0 0 12px rgba(103,232,249,.25))}
+.skill-card h3{font-size:16px}
+.skill-card p{font-size:13px}
+.timeline{margin-left:10px;padding-left:30px;border-left:1px solid rgba(167,139,250,.45);display:grid;gap:28px}
+.timeline-item{position:relative}
+.timeline-item:before{content:"";position:absolute;left:-36px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}
+.timeline-item h3{font-size:17px;margin-bottom:5px}
+.timeline-item p{font-size:14px;color:var(--muted)}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project-card{min-height:205px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.project-card:after{content:"";position:absolute;width:130px;height:130px;right:-45px;bottom:-55px;border:1px solid rgba(103,232,249,.16);border-radius:50%;box-shadow:0 0 0 18px rgba(103,232,249,.025),0 0 0 38px rgba(103,232,249,.02)}
+.project-label{font:10px "DM Mono",monospace;color:var(--cyan);letter-spacing:2px}
+.project-card h3{margin:12px 0 5px}
+.coming{display:inline-block;width:fit-content;margin-top:18px;padding:5px 10px;border-radius:30px;border:1px solid rgba(167,139,250,.3);color:#d2c3ff;font:9px "DM Mono",monospace;letter-spacing:1px}
+.contact-card{text-align:center;padding:48px 25px}
+.contact-card h2{font-size:clamp(30px,5vw,46px);margin:10px 0}
+.contact-card>p{max-width:500px;margin:auto}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.contact-links a{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:11px;padding:12px 17px;font-size:12px;transition:.25s}
+.contact-links a:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:var(--glow)}
+.contact-links .social-mark{font-size:15px;color:var(--cyan)}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font:10px "DM Mono",monospace;text-align:center;letter-spacing:.4px}
+footer strong{color:white}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:760px){
+ .menu-btn{display:block}.nav-links{display:none;position:absolute;top:76px;left:0;right:0;padding:12px 5%;background:rgba(7,8,18,.97);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+ .nav-links.open{display:flex}.nav-links a{padding:13px 4px}.hero-grid,.about-grid{grid-template-columns:1fr}.hero-grid{gap:45px}.hero h1{letter-spacing:-3px}.skills-grid{grid-template-columns:repeat(2,1fr)}section{padding:88px 0}
+}
+@media(max-width:480px){.skills-grid,.project-grid{grid-template-columns:1fr}.hero h1{font-size:55px}.profile-card{padding:25px}.contact-links{flex-direction:column}.contact-links a{justify-content:center}.profile-stats{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="particles" aria-hidden="true"></canvas>
+<header>
+ <nav class="container" aria-label="Main navigation">
+  <a href="#home" class="logo">HIZUTOME<span>.</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+  <div class="nav-links" id="navLinks">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </div>
+ </nav>
+</header>
+<main>
+<section class="hero" id="home"><div class="container hero-grid">
+ <div class="reveal">
+  <div class="eyebrow">✦ Welcome to my digital universe</div>
+  <h1>Hello, I'm<br><span class="gradient">HIZUTOME.</span></h1>
+  <p class="hero-description">An aspiring Full-Stack Developer with a passion for technology, creativity, and building things that bring ideas to life. This is where my journey begins.</p>
+  <div class="actions"><a href="#about" class="btn btn-primary">Explore my world <span>↗</span></a><a href="#contact" class="btn btn-secondary">Let's connect <span>↗</span></a></div>
+ </div>
+ <div class="profile-wrap reveal"><div class="orbit"></div><div class="profile-card">
+  <div class="profile-top"><div class="profile-icon">H.</div><span class="card-code">ID // 001</span></div>
+  <h2>HIZUTOME</h2><p>Future Full-Stack Developer</p>
+  <div class="status"><span class="status-dot"></span> ONLINE — LEARNING & BUILDING</div>
+  <div class="profile-stats"><div class="stat"><strong>∞</strong><span>Curiosity</span></div><div class="stat"><strong>01</strong><span>Journey started</span></div></div>
+ </div></div>
+</div></section>
+<section id="about"><div class="container">
+ <div class="section-heading reveal"><div class="eyebrow">01 / About me</div><h2>A little about <span class="gradient">myself.</span></h2><p>Getting to know the person behind the screen.</p></div>
+ <div class="about-grid">
+  <div class="card reveal"><h3>Who am I?</h3><p>I'm someone who enjoys technology and discovering how things work. I'm interested in programming, creating applications, and exploring new ideas.<br><br>My goal is to become a Full-Stack Developer and eventually create my own applications and games. I'm still learning, improving, and building my skills one step at a time.</p></div>
+  <div class="card reveal"><h3>Quick information</h3><div class="info-list"><div class="info-item"><span>Nickname</span><span>Hizutome</span></div><div class="info-item"><span>Education</span><span>Grade 11</span></div><div class="info-item"><span>Career goal</span><span>Full-Stack Developer</span></div><div class="info-item"><span>Interests</span><span>Tech & Gaming</span></div></div></div>
+ </div>
+</div></section>
+<section id="skills"><div class="container">
+ <div class="section-heading reveal"><div class="eyebrow">02 / My skills</div><h2>What I'm <span class="gradient">exploring.</span></h2><p>Skills and interests I'm developing along the way.</p></div>
+ <div class="skills-grid">
+  <article class="card skill-card reveal"><div class="skill-icon">⌨️</div><h3>Programming</h3><p>Learning programming fundamentals and how to write code.</p></article>
+  <article class="card skill-card reveal"><div class="skill-icon">🌐</div><h3>Web development</h3><p>Exploring HTML, CSS, JavaScript, and website development.</p></article>
+  <article class="card skill-card reveal"><div class="skill-icon">💻</div><h3>Computer technology</h3><p>Understanding computer hardware, software, and technology.</p></article>
+  <article class="card skill-card reveal"><div class="skill-icon">🎮</div><h3>Game development</h3><p>Interested in creating games and interactive experiences.</p></article>
+  <article class="card skill-card reveal"><div class="skill-icon">🎨</div><h3>Creativity</h3><p>Exploring design, visual ideas, and creative projects.</p></article>
+  <article class="card skill-card reveal"><div class="skill-icon">🚀</div><h3>Continuous learning</h3><p>Always looking for opportunities to learn and improve.</p></article>
+ </div>
+</div></section>
+<section id="journey"><div class="container">
+ <div class="section-heading reveal"><div class="eyebrow">03 / My journey</div><h2>Where it <span class="gradient">begins.</span></h2><p>Every developer starts somewhere. This is my beginning.</p></div>
+ <div class="timeline reveal">
+  <div class="timeline-item"><h3>Discovering technology</h3><p>Developing an interest in computers, technology, and how digital things work.</p></div>
+  <div class="timeline-item"><h3>Learning the fundamentals</h3><p>Exploring programming concepts, computer systems, and the basics of web development.</p></div>
+  <div class="timeline-item"><h3>Building my first projects</h3><p>Turning what I learn into real projects and gaining experience through practice.</p></div>
+  <div class="timeline-item"><h3>The future</h3><p>Becoming a Full-Stack Developer and creating my own applications and games.</p></div>
+ </div>
+</div></section>
+<section id="projects"><div class="container">
+ <div class="section-heading reveal"><div class="eyebrow">04 / My projects</div><h2>Things I'm going to <span class="gradient">build.</span></h2><p>This space will grow as I create more projects.</p></div>
+ <div class="project-grid">
+  <article class="card project-card reveal"><div><div class="project-label">PROJECT // 001</div><h3>First web project</h3><p>A starting point for my web development journey.</p></div><span class="coming">IN DEVELOPMENT</span></article>
+  <article class="card project-card reveal"><div><div class="project-label">PROJECT // 002</div><h3>Future application</h3><p>An application idea waiting to become reality.</p></div><span class="coming">ON THE HORIZON</span></article>
+ </div>
+</div></section>
+<section id="contact"><div class="container"><div class="card contact-card reveal">
+ <div class="eyebrow">05 / Contact me</div><h2>Let's <span class="gradient">connect.</span></h2><p>Have something to share or want to connect? Find me through my social accounts.</p>
+ <div class="contact-links">
+  <!-- Replace this Facebook URL with your exact public profile/page URL if this share link is not your profile. -->
+  <a href="https://www.facebook.com/share/192DH8wKgS/" target="_blank" rel="noopener noreferrer" aria-label="Visit Hizutome on Facebook"><span class="social-mark">f</span> Facebook <span>↗</span></a>
+  <a href="https://www.instagram.com/joshuarafable/" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram"><span class="social-mark">◎</span> Instagram <span>↗</span></a>
+  <a href="mailto:markjoshuarafable@gmail.com" aria-label="Send an email"><span class="social-mark">✉</span> Gmail <span>↗</span></a>
+ </div>
+</div></div></section>
+</main>
+<footer><div class="container">© <span id="year"></span> <strong>HIZUTOME.</strong> All rights reserved.<br>Built with curiosity, caffeine & creativity.</div></footer>
+<script>
+"use strict";
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+function closeMenu(){navLinks.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.setAttribute("aria-label","Open navigation");menuBtn.textContent="☰";}
+menuBtn.addEventListener("click",()=>{
+  const open=navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",String(open));
+  menuBtn.setAttribute("aria-label",open?"Close navigation":"Open navigation");
+  menuBtn.textContent=open?"✕":"☰";
+});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu();});
+
+const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");revealObserver.unobserve(entry.target);}});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+
+const sections=[...document.querySelectorAll("main section")];
+const navItems=[...document.querySelectorAll(".nav-links a")];
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)navItems.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));});
+},{rootMargin:"-30% 0px -60% 0px"});
+sections.forEach(section=>sectionObserver.observe(section));
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+let width=0,height=0,particles=[],pointer={x:-1000,y:-1000},trails=[];
+function resizeCanvas(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  width=window.innerWidth;height=window.innerHeight;
+  canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const count=reduceMotion?0:Math.min(65,Math.floor(width/15));
+  particles=Array.from({length:count},()=>({x:Math.random()*width,y:Math.random()*height,vx:(Math.random()-.5)*.32,vy:(Math.random()-.5)*.32,r:Math.random()*1.5+.5}));
+}
+window.addEventListener("resize",resizeCanvas,{passive:true});resizeCanvas();
+window.addEventListener("pointermove",e=>{pointer.x=e.clientX;pointer.y=e.clientY;if(!reduceMotion){trails.push({x:e.clientX,y:e.clientY,life:1});if(trails.length>30)trails.shift();}},{passive:true});
+window.addEventListener("pointerleave",()=>{pointer.x=-1000;pointer.y=-1000;});
+window.addEventListener("pointerdown",e=>{
+  if(reduceMotion)return;
+  for(let i=0;i<10;i++){const a=Math.random()*Math.PI*2,s=Math.random()*1.8+.4;trails.push({x:e.clientX,y:e.clientY,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1});}
+},{passive:true});
+function animate(){
+  ctx.clearRect(0,0,width,height);
+  for(const p of particles){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>width)p.vx*=-1;if(p.y<0||p.y>height)p.vy*=-1;
+    const dx=pointer.x-p.x,dy=pointer.y-p.y,d=Math.hypot(dx,dy);
+    if(d<105&&d>0){p.x-=dx/d*.35;p.y-=dy/d*.35;}
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle="rgba(174,190,255,.7)";ctx.fill();
+  }
+  for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+    const a=particles[i],b=particles[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<105){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(103,232,249,${.13*(1-d/105)})`;ctx.stroke();}
+  }
+  for(const t of trails){t.x+=t.vx||0;t.y+=t.vy||0;t.life-=.04;ctx.beginPath();ctx.arc(t.x,t.y,2*t.life,0,Math.PI*2);ctx.fillStyle=`rgba(167,139,250,${Math.max(0,t.life)})`;ctx.fill();}
+  trails=trails.filter(t=>t.life>0);
+  if(!reduceMotion)requestAnimationFrame(animate);
+}
+if(!reduceMotion)animate();
+</script>
+</body>
+</html>
